@@ -1,3 +1,5 @@
+import { AddTaskModal } from "@/components/module/tasks/AddTaskModal";
+import TaskCard from "@/components/module/tasks/TaskCard";
 import { selectTasks } from "@/redux/features/tasks/tasksSlice";
 import { useAppSelector } from "@/redux/hook";
 
@@ -7,8 +9,18 @@ const Tasks = () => {
     console.log('tasks:', tasks)
 
     return (
-        <div>
-            tasks
+        <div className="mx-auto max-w-7xl px-5 mt-20">
+            <div className="flex justify-between">
+                <div>
+                    <h1>Tasks</h1>
+                </div>
+                <AddTaskModal />
+            </div>
+            <div className="space-y-5 mt-5">
+                {
+                    tasks.map((task, index) => <TaskCard key={index} task={task}></TaskCard>)
+                }
+            </div>
         </div>
     );
 };
